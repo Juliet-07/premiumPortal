@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700;800;900&display=$wap");
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=$wap");
 
 @layer base {
   body {
-    @apply font-[Arimo];
+    @apply font-[Figtree];
   }
 }
