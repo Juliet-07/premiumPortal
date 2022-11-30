@@ -64,10 +64,9 @@ const Dashboard = () => {
           <p>kdfjv fdlivnflvilfkdv</p>
         </div>
       </div>
-      {/* <div className="bg-red-700 mx-10 my-10">
-        slides
+      <div className="w-[1000px] h-[150px] mx-10 my-20">
         <Slider />
-      </div> */}
+      </div>
     </div>
   );
 };

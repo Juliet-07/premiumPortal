@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { BsArrowLeftShort, BsChevronDown } from "react-icons/bs";
 import {
   MdDashboard,
@@ -13,14 +13,15 @@ import { FiSettings } from "react-icons/fi";
 import Icon from "../assets/icon.png";
 import Header from "./Header";
 
-const Layout = () => {
+const Layout = ({ children }) => {
   const [open, setOpen] = useState(true);
   const [submenuOpen, setSubmenuOpen] = useState(false);
   const Menus = [
-    { title: "Overview", path: "/" },
+    { title: "Overview", path: "/dashboard" },
     {
       title: "Applications",
       icon: <MdOutlineSettingsApplications />,
+      path: "/application",
       submenu: true,
       submenuItems: [
         {
@@ -56,7 +57,7 @@ const Layout = () => {
     {
       title: "Directories ",
       icon: <GoFileDirectory />,
-      path: "/login",
+      path: "/directories",
       submenu: true,
       submenuItems: [
         { title: "Business Report" },
@@ -67,6 +68,7 @@ const Layout = () => {
     {
       title: "Employee Connect",
       icon: <MdOutlineConnectWithoutContact />,
+      path: "/employee",
       submenu: true,
       submenuItems: [
         { title: "Profile" },
@@ -77,6 +79,7 @@ const Layout = () => {
     {
       title: "Forms & Register",
       icon: <FaCashRegister />,
+      path: "/register",
       submenu: true,
       submenuItems: [
         { title: "Cash Advance" },
@@ -86,16 +89,17 @@ const Layout = () => {
       ],
       spacing: true,
     },
-    { title: "Setting", path: "/settings", icon: <FiSettings /> },
-    { title: "Logout", icon: <MdOutlineLogout />, spacing: true },
+    { title: "Settings", path: "/settings", icon: <FiSettings /> },
+    {
+      title: "Logout",
+      path: "/",
+      icon: <MdOutlineLogout />,
+      spacing: true,
+    },
   ];
   const SidebarLinks = ({ menu }) => {
-    // const { pathname } = useLocation();
     return (
-      <Link
-        to={menu.path}
-        // className={pathname === menu.path && "text-black bg-red-600"}
-      >
+      <NavLink to={menu.path}>
         <li
           className={`text-[#9B9CA0] flex items-center gap-x-4 cursor-pointer p-2 hover:bg-red-600 hover:text-white hover:font-semibold rounded-md mt-2 ${
             menu.spacing ? "mt-9" : "mt-2"
@@ -132,7 +136,7 @@ const Layout = () => {
             ))}
           </ul>
         )}
-      </Link>
+      </NavLink>
     );
   };
   return (
@@ -170,7 +174,7 @@ const Layout = () => {
       </div>
       <div className="flex-1">
         <Header text="Dashboard" />
-        <div className="w-full h-full bg-gray-50">{<Outlet />}</div>
+        <main className="w-full h-full bg-gray-50">{children}</main>
       </div>
     </div>
   );

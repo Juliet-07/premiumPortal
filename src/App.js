@@ -1,19 +1,14 @@
+import React from "react"
+// import "./App.css"
 import { Route, Routes } from "react-router-dom";
-import Layout from "./components/Layout";
-import Dashboard from "./pages/dashboard";
-import Login from "./pages/login";
-import Settings from "./pages/settings";
 import Signin from "./pages/signin";
+import SidebarRoute from "./SidebarRoute";
 
 function App() {
   return (
     <Routes>
-      {/* <Route path="/login" element={<Login />} /> */}
-      <Route path="/signin" element={<Signin />} />
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Dashboard />} />
-        <Route path="/settings" element={<Settings />} />
-      </Route>
+      <Route path="/" element={<Signin />} />
+      <Route path="/*" element={<SidebarRoute />} />
     </Routes>
   );
 }
