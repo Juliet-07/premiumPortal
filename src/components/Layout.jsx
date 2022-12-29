@@ -10,7 +10,7 @@ import {
 import { GoFileDirectory } from "react-icons/go";
 import { FaCashRegister } from "react-icons/fa";
 import { FiSettings } from "react-icons/fi";
-import Icon from "../assets/icon.png";
+import Icon from "../assets/ICON-PNG.png";
 import Header from "./Header";
 
 const Layout = ({ children }) => {
@@ -58,36 +58,16 @@ const Layout = ({ children }) => {
       title: "Directories ",
       icon: <GoFileDirectory />,
       path: "/directories",
-      submenu: true,
-      submenuItems: [
-        { title: "Business Report" },
-        { title: "Manuals" },
-        { title: "App 3" },
-      ],
     },
     {
       title: "Employee Connect",
       icon: <MdOutlineConnectWithoutContact />,
       path: "/employee",
-      submenu: true,
-      submenuItems: [
-        { title: "Profile" },
-        { title: "Leave Request" },
-        { title: "App 3" },
-      ],
     },
     {
       title: "Forms & Register",
       icon: <FaCashRegister />,
       path: "/register",
-      submenu: true,
-      submenuItems: [
-        { title: "Cash Advance" },
-        { title: "Expense Processing" },
-        { title: "Checkbook Request" },
-        { title: "POS Request" },
-      ],
-      spacing: true,
     },
     { title: "Settings", path: "/settings", icon: <FiSettings /> },
     {
@@ -101,7 +81,7 @@ const Layout = ({ children }) => {
     return (
       <NavLink to={menu.path}>
         <li
-          className={`text-[#9B9CA0] flex items-center gap-x-4 cursor-pointer p-2 hover:bg-red-600 hover:text-white hover:font-semibold rounded-md mt-2 ${
+          className={`text-white flex items-center gap-x-4 cursor-pointer p-2 hover:bg-red-600 hover:text-white hover:font-semibold rounded-md mt-2 ${
             menu.spacing ? "mt-9" : "mt-2"
           }`}
         >
@@ -140,9 +120,9 @@ const Layout = ({ children }) => {
     );
   };
   return (
-    <div className="flex flex-row w-screen h-full">
+    <div className="flex flex-row w-full h-full">
       <div
-        className={`bg-white h-screen p-5 pt-8 ${
+        className={`bg-[#2b2e35] h-screen p-5 pt-8 ${
           open ? "w-80" : "w-20"
         } duration-300 relative rounded-r-3xl shadow-2xl`}
       >
@@ -152,14 +132,14 @@ const Layout = ({ children }) => {
           }`}
           onClick={() => setOpen(!open)}
         />
-        <div className="inline-flex">
+        <div className="inline-flex mb-10">
           <img
             src={Icon}
             alt="PremiumIcon"
-            className={`w-10 h-10 duration-500 ${open && "rotate-[360deg]"}`}
+            className={`w-12 h-12 duration-500 ${open && "rotate-[360deg]"}`}
           />
           <div
-            className={`w-60 h-10 font-bold text-2xl text-red-600 origin-left duration-300 ${
+            className={`w-60 h-10 font-bold text-3xl text-red-600 origin-left duration-300 ${
               !open && "scale-0"
             }`}
           >

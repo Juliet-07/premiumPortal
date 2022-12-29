@@ -46,7 +46,7 @@ const Dashboard = () => {
       {/* <Calendar /> */}
       <div className="flex items-center justify-between mx-10">
         <div className="w-[632px] h-full flex-col shadow-md mr-8">
-          <div className="h-[52px] bg-[#2B2E35] rounded-t-xl text-xl text-white font-medium p-4">
+          <div className="h-[52px] bg-red-600 rounded-t-xl text-xl text-white font-medium p-4">
             Favorite Links
           </div>
           <p>kdfjv fdlivnflvilfkdv</p>
@@ -55,7 +55,7 @@ const Dashboard = () => {
           <p>kdfjv fdlivnflvilfkdv</p>
         </div>
         <div className="w-[362px] h-full flex-col shadow-md">
-          <div className="h-[52px] bg-[#2B2E35] rounded-t-xl text-xl text-white font-medium p-4">
+          <div className="h-[52px] bg-red-600 rounded-t-xl text-xl text-white font-medium p-4">
             Who is celebrating?
           </div>
           <p>kdfjv fdlivnflvilfkdv</p>
