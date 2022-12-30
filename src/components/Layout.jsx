@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
     {
       title: "Applications",
       icon: <MdOutlineSettingsApplications />,
-      path: "/application",
+      path: "/applications",
       submenu: true,
       submenuItems: [
         {
@@ -95,16 +95,16 @@ const Layout = ({ children }) => {
           >
             {menu.title}
           </span>
-          {menu.submenu && open && (
+          {/* {menu.submenu && open && (
             <BsChevronDown
               className={`${submenuOpen && "rotate-180"}`}
               onClick={() => {
                 setSubmenuOpen(!submenuOpen);
               }}
             />
-          )}
+          )} */}
         </li>
-        {menu.submenu && submenuOpen && open && (
+        {/* {menu.submenu && submenuOpen && open && (
           <ul>
             {menu.submenuItems.map((submenuItem, index) => (
               <li
@@ -115,7 +115,7 @@ const Layout = ({ children }) => {
               </li>
             ))}
           </ul>
-        )}
+        )} */}
       </NavLink>
     );
   };
@@ -148,13 +148,13 @@ const Layout = ({ children }) => {
         </div>
         <ul className="pt-2">
           {Menus.map((menu, index) => (
-            <SidebarLinks key={index} menu={menu} />
+            <SidebarLinks key={index} menu={menu} className={`${index === 0 && "bg-red-600"}`} />
           ))}
         </ul>
       </div>
       <div className="flex-1">
         <Header text="Dashboard" />
-        <main className="w-full h-full bg-gray-50">{children}</main>
+        <main className="w-full h-full flex-1 bg-gray-50">{children}</main>
       </div>
     </div>
   );
