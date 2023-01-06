@@ -1,15 +1,29 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { BsArrowLeftShort, BsChevronDown } from "react-icons/bs";
+import {
+  BsArrowLeftShort,
+  BsChevronDown,
+  BsFillPieChartFill,
+  BsCart4
+} from "react-icons/bs";
 import {
   MdDashboard,
   MdOutlineSettingsApplications,
   MdOutlineConnectWithoutContact,
+  MdQuestionAnswer,
   MdOutlineLogout,
 } from "react-icons/md";
 import { GoFileDirectory } from "react-icons/go";
-import { FaCashRegister } from "react-icons/fa";
+import { GiBookmark } from "react-icons/gi";
+import {
+  FaCashRegister,
+  FaJournalWhills,
+  FaPeopleArrows,
+} from "react-icons/fa";
+import { FcOpenedFolder,FcManager } from "react-icons/fc";
 import { FiSettings } from "react-icons/fi";
+import { RiCustomerService2Line } from "react-icons/ri";
+import { SiFormstack } from "react-icons/si";
 import Icon from "../assets/ICON-PNG.png";
 import Header from "./Header";
 
@@ -55,20 +69,51 @@ const Layout = ({ children }) => {
       ],
     },
     {
+      title: "Customer Service",
+      icon: <RiCustomerService2Line />,
+      path: "/customerService",
+    },
+    {
+      title: "Data Processing",
+      icon: <FcOpenedFolder />,
+      path: "/dataProcessing",
+    },
+    {
       title: "Directories ",
-      icon: <GoFileDirectory />,
+      icon: <FaJournalWhills />,
       path: "/directories",
     },
     {
       title: "Employee Connect",
-      icon: <MdOutlineConnectWithoutContact />,
+      icon: <FaPeopleArrows />,
       path: "/employee",
     },
     {
-      title: "Forms & Register",
-      icon: <FaCashRegister />,
-      path: "/register",
+      title: "Enquiries",
+      icon: <MdQuestionAnswer />,
+      path: "/enquiries",
     },
+    {
+      title: "Forms & Register",
+      icon: <SiFormstack />,
+      path: "/forms",
+    },
+    {
+      title: "Performance Evaluation",
+      icon: <BsFillPieChartFill />,
+      path: "/performanceEvaluation",
+    },
+    {
+      title: "Policies & Procedure",
+      icon: <GiBookmark />,
+      path: "/policies",
+    },
+    {
+      title:"Requisitions",
+      icon:<BsCart4/>,
+      path:"/requisitions"
+    },
+    { title: "Profile Manager", path: "/settings", icon: <FcManager /> },
     { title: "Settings", path: "/settings", icon: <FiSettings /> },
     {
       title: "Logout",
@@ -81,15 +126,15 @@ const Layout = ({ children }) => {
     return (
       <NavLink to={menu.path}>
         <li
-          className={`text-white flex items-center gap-x-4 cursor-pointer p-2 hover:bg-red-600 hover:text-white hover:font-semibold rounded-md mt-2 ${
-            menu.spacing ? "mt-9" : "mt-2"
+          className={`text-white flex items-center gap-x-4 cursor-pointer p-4 hover:bg-red-600 hover:text-white hover:font-semibold rounded-md mt-2 ${
+            menu.spacing ? "mt-20" : "mt-0"
           }`}
         >
           <span className="text-2xl block float-left">
             {menu.icon ? menu.icon : <MdDashboard />}
           </span>
           <span
-            className={`text-base flex-1 font-medium duration-200 ${
+            className={`text-base font-medium duration-200 ${
               !open && "hidden"
             }`}
           >
@@ -122,7 +167,7 @@ const Layout = ({ children }) => {
   return (
     <div className="flex flex-row w-full h-full">
       <div
-        className={`bg-[#2b2e35] h-screen p-5 pt-8 ${
+        className={`h-full bg-[#2b2e35] p-5 pt-8 ${
           open ? "w-80" : "w-20"
         } duration-300 relative rounded-r-3xl shadow-2xl`}
       >
@@ -132,23 +177,27 @@ const Layout = ({ children }) => {
           }`}
           onClick={() => setOpen(!open)}
         />
-        <div className="inline-flex mb-10">
+        <div className="inline-flex mb-6">
           <img
             src={Icon}
             alt="PremiumIcon"
             className={`w-12 h-12 duration-500 ${open && "rotate-[360deg]"}`}
           />
           <div
-            className={`w-60 h-10 font-bold text-3xl text-red-600 origin-left duration-300 ${
+            className={`font-bold text-xl text-red-600 origin-left duration-300 p-2 ${
               !open && "scale-0"
             }`}
           >
             PremiumTrust Bank
           </div>
         </div>
-        <ul className="pt-2">
+        <ul>
           {Menus.map((menu, index) => (
-            <SidebarLinks key={index} menu={menu} className={`${index === 0 && "bg-red-600"}`} />
+            <SidebarLinks
+              key={index}
+              menu={menu}
+              className={`${index === 0 && "bg-red-600"}`}
+            />
           ))}
         </ul>
       </div>
