@@ -91,7 +91,8 @@ const Calendar = () => {
   return (
     <div className="pt-16">
       <div className="max-w-md px-4 mx-auto sm:px-7 md:max-w-4xl md:px-6">
-        <div className="md:grid md:grid-cols-2 md:divide-x md:divide-gray-200">
+        {/* <div className="md:grid md:grid-cols-2 md:divide-x md:divide-gray-200"> */}
+        <div>
           <div className="md:pr-14">
             <div className="flex items-center">
               <h2 className="flex-auto font-semibold text-gray-900">
@@ -174,7 +175,7 @@ const Calendar = () => {
               ))}
             </div>
           </div>
-          <section className="mt-12 md:mt-0 md:pl-14">
+          {/* <section className="mt-12 md:mt-0 md:pl-14">
             <h2 className="font-semibold text-gray-900">
               Schedule for{" "}
               <time dateTime={format(selectedDay, "yyyy-MM-dd")}>
@@ -190,7 +191,7 @@ const Calendar = () => {
                 <p>No meetings for today.</p>
               )}
             </ol>
-          </section>
+          </section> */}
         </div>
       </div>
     </div>
@@ -276,7 +277,7 @@ function Meeting({ meeting }) {
   );
 }
 
-let  colStartClasses = [
+let colStartClasses = [
   "",
   "col-start-2",
   "col-start-3",

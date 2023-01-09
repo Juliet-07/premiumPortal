@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ProfilePhoto from "../assets/profile.jpg";
 import { FcCalendar } from "react-icons/fc";
+import { IoPersonSharp } from "react-icons/io5";
 import { format, startOfToday } from "date-fns";
-import Calendar from "react-calendar";
+// import Calendar from "react-calendar";
+import Calendar from "../components/Calendar";
 import "react-calendar/dist/Calendar.css";
 import Slider from "../components/Slider";
 
@@ -35,13 +37,14 @@ const Dashboard = () => {
             {user.name}
           </div>
 
-          <div className="flex bg-[#ffffff] w-[415px] h-[150px] rounded-xl shadow-lg">
-            <div className="mx-4 my-2">
-              <img
+          <div className="flex items-center bg-[#ffffff] w-[415px] h-[150px] rounded-xl shadow-lg">
+            <div className="bg-gray-200 w-20 h-20 text-6xl text-white text-center p-2 rounded-full mx-4 my-2">
+              <IoPersonSharp />
+              {/* <img
                 src={ProfilePhoto}
                 alt="Profile_Photo"
                 className="w-[120px] h-[123px] rounded-full"
-              />
+              /> */}
             </div>
             <div className="flex-col my-4">
               <p className="font-bold text-2xl">{user.name}</p>
@@ -60,18 +63,15 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        {/* <div> */}
-        {/* <Calendar /> */}
-        {/* <div className="bg-red-600 w-[250px] h-[150px] shadow-xl rounded-xl">
-          calendar
-        </div> */}
-        {/* </div> */}
-        <div className="flex">
+        <div>
+          <Calendar />
+        </div>
+        {/* <div className="flex">
           <FcCalendar className="text-3xl mr-2" />
           <div className="text-base">{format(today, "dd, MMM yyyy")}</div>
-        </div>
+        </div> */}
       </div>
-      <div className="w-full flex items-center justify-around">
+      <div className="w-full flex items-center justify-between px-10">
         <div className="w-[632px] h-full flex-col shadow-md mr-8 shadow-red-200">
           <div className="h-[52px] bg-red-600 rounded-t-xl text-xl text-white font-medium p-4">
             Favorite Links

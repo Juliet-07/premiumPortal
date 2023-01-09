@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { Menu } from "antd";
 import {
   BsArrowLeftShort,
   BsChevronDown,
   BsFillPieChartFill,
-  BsCart4
+  BsCart4,
 } from "react-icons/bs";
 import {
   MdDashboard,
@@ -20,7 +21,7 @@ import {
   FaJournalWhills,
   FaPeopleArrows,
 } from "react-icons/fa";
-import { FcOpenedFolder,FcManager } from "react-icons/fc";
+import { FcOpenedFolder, FcManager } from "react-icons/fc";
 import { FiSettings } from "react-icons/fi";
 import { RiCustomerService2Line } from "react-icons/ri";
 import { SiFormstack } from "react-icons/si";
@@ -36,37 +37,6 @@ const Layout = ({ children }) => {
       title: "Applications",
       icon: <MdOutlineSettingsApplications />,
       path: "/applications",
-      submenu: true,
-      submenuItems: [
-        {
-          title: "FCUBS",
-          path: "https://premiumfcubs.premiumtrustbank.com/FCJNeoWeb",
-        },
-        {
-          title: "OBIEE",
-          path: "http://obiee.premiumtrustbank.com:9502/xmlpserver",
-        },
-        {
-          title: "NIBSS Document Verification Portal",
-          path: "https://172.18.5.50/",
-        },
-        {
-          title: "PEP",
-          path: "https://apps.powerapps.com/play/e1210308-4253-40fe-bf2e-e7e287a1f406?tenantId=ea5cc842-6f08-4924-bd60-e99929d9531b",
-        },
-        {
-          title: "SOFTAML",
-          path: "http://192.168.201.2/softaml_premiumtrust/login",
-        },
-        {
-          title: "BVN Validation Portal",
-          path: "https://bvnportal.premiumtrustbank.com/",
-        },
-        {
-          title: "Cooperate Internet Banking",
-          path: "https://cib.premiumtrustbank.com/user/login",
-        },
-      ],
     },
     {
       title: "Customer Service",
@@ -109,11 +79,42 @@ const Layout = ({ children }) => {
       path: "/policies",
     },
     {
-      title:"Requisitions",
-      icon:<BsCart4/>,
-      path:"/requisitions"
+      title: "Requisitions",
+      icon: <BsCart4 />,
+      path: "/requisitions",
+      submenu: true,
+      submenuItems: [
+        {
+          title: "FCUBS",
+          path: "https://premiumfcubs.premiumtrustbank.com/FCJNeoWeb",
+        },
+        {
+          title: "OBIEE",
+          path: "http://obiee.premiumtrustbank.com:9502/xmlpserver",
+        },
+        {
+          title: "NIBSS Document Verification Portal",
+          path: "https://172.18.5.50/",
+        },
+        {
+          title: "PEP",
+          path: "https://apps.powerapps.com/play/e1210308-4253-40fe-bf2e-e7e287a1f406?tenantId=ea5cc842-6f08-4924-bd60-e99929d9531b",
+        },
+        {
+          title: "SOFTAML",
+          path: "http://192.168.201.2/softaml_premiumtrust/login",
+        },
+        {
+          title: "BVN Validation Portal",
+          path: "https://bvnportal.premiumtrustbank.com/",
+        },
+        {
+          title: "Cooperate Internet Banking",
+          path: "https://cib.premiumtrustbank.com/user/login",
+        },
+      ],
     },
-    { title: "Profile Manager", path: "/settings", icon: <FcManager /> },
+    { title: "Profile Manager", path: "/manager", icon: <FcManager /> },
     { title: "Settings", path: "/settings", icon: <FiSettings /> },
     {
       title: "Logout",
@@ -122,9 +123,17 @@ const Layout = ({ children }) => {
       spacing: true,
     },
   ];
+  const activeLink =
+    "mt-4 pl-4 flex justify-start items-center text-white text-2xl space-x-1 font-bold bg-red-600 rounded-xl";
+  const normalLink =
+    "hover:bg-red-500 pl-4 mt-4 flex justify-start items-center text-white text-base space-x-1 font-semibold";
+
   const SidebarLinks = ({ menu }) => {
     return (
-      <NavLink to={menu.path}>
+      <NavLink
+        to={menu.path}
+        className={({ isActive }) => (isActive ? activeLink : normalLink)}
+      >
         <li
           className={`text-white flex items-center gap-x-4 cursor-pointer p-4 hover:bg-red-600 hover:text-white hover:font-semibold rounded-md mt-2 ${
             menu.spacing ? "mt-20" : "mt-0"
@@ -140,16 +149,16 @@ const Layout = ({ children }) => {
           >
             {menu.title}
           </span>
-          {/* {menu.submenu && open && (
+          {menu.submenu && open && (
             <BsChevronDown
               className={`${submenuOpen && "rotate-180"}`}
               onClick={() => {
                 setSubmenuOpen(!submenuOpen);
               }}
             />
-          )} */}
+          )}
         </li>
-        {/* {menu.submenu && submenuOpen && open && (
+        {menu.submenu && submenuOpen && open && (
           <ul>
             {menu.submenuItems.map((submenuItem, index) => (
               <li
@@ -160,12 +169,12 @@ const Layout = ({ children }) => {
               </li>
             ))}
           </ul>
-        )} */}
+        )}
       </NavLink>
     );
   };
   return (
-    <div className="flex flex-row w-full h-full">
+    <div className="flex flex-row">
       <div
         className={`h-full bg-[#2b2e35] p-5 pt-8 ${
           open ? "w-80" : "w-20"
@@ -193,11 +202,7 @@ const Layout = ({ children }) => {
         </div>
         <ul>
           {Menus.map((menu, index) => (
-            <SidebarLinks
-              key={index}
-              menu={menu}
-              className={`${index === 0 && "bg-red-600"}`}
-            />
+            <SidebarLinks key={index} menu={menu} />
           ))}
         </ul>
       </div>
