@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import LoginImage from "../assets/login.png";
 import Logo from "../assets/logo.png";
+// import Loader from "../components/Loader";
+import CircleLoader from "react-spinners/CircleLoader";
 
 const Signin = () => {
   const navigate = useNavigate();
@@ -17,7 +19,7 @@ const Signin = () => {
     const { name, value } = e.target;
     setLoginDetails({ ...loginDetails, [name]: value });
   };
-
+  const [loading, setLoading] = useState(false);
   // function to validate user through ActiveDirectory
   const handleLoginValidation = () => {
     try {
@@ -109,9 +111,14 @@ const Signin = () => {
                   <button
                     type="submit"
                     className="w-full px-4 py-2 font-medium tracking-wide text-white transition-colors duration-200 transform bg-red-700 rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600"
+                    onClick={() => setLoading(!loading)}
                   >
                     Login
                   </button>
+                  <div className="flex items-center justify-center mt-2">
+                    <CircleLoader loading={loading} color="red" />
+                  </div>
+                  {/* <Loader /> */}
                 </div>
               </form>
             </div>

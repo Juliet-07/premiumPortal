@@ -27,6 +27,7 @@ import { RiCustomerService2Line } from "react-icons/ri";
 import { SiFormstack } from "react-icons/si";
 import Icon from "../assets/ICON-PNG.png";
 import Header from "./Header";
+import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   const [open, setOpen] = useState(true);
@@ -124,9 +125,9 @@ const Layout = ({ children }) => {
     },
   ];
   const activeLink =
-    "mt-4 pl-4 flex justify-start items-center text-white text-2xl space-x-1 font-bold bg-red-600 rounded-xl";
+    "mt-4 mx-6 pl-4 flex justify-start items-center text-white text-2xl space-x-1 font-bold bg-red-600 rounded-xl";
   const normalLink =
-    "hover:bg-red-500 pl-4 mt-4 flex justify-start items-center text-white text-base space-x-1 font-semibold";
+    "hover:bg-red-500 pl-4 mt-4 mx-4 flex justify-start items-center text-white text-base space-x-1 font-semibold";
 
   const SidebarLinks = ({ menu }) => {
     return (
@@ -149,16 +150,16 @@ const Layout = ({ children }) => {
           >
             {menu.title}
           </span>
-          {menu.submenu && open && (
+          {/* {menu.submenu && open && (
             <BsChevronDown
               className={`${submenuOpen && "rotate-180"}`}
               onClick={() => {
                 setSubmenuOpen(!submenuOpen);
               }}
             />
-          )}
+          )} */}
         </li>
-        {menu.submenu && submenuOpen && open && (
+        {/* {menu.submenu && submenuOpen && open && (
           <ul>
             {menu.submenuItems.map((submenuItem, index) => (
               <li
@@ -169,47 +170,50 @@ const Layout = ({ children }) => {
               </li>
             ))}
           </ul>
-        )}
+        )} */}
       </NavLink>
     );
   };
   return (
-    <div className="flex flex-row">
-      <div
-        className={`h-full bg-[#2b2e35] p-5 pt-8 ${
-          open ? "w-80" : "w-20"
-        } duration-300 relative rounded-r-3xl shadow-2xl`}
-      >
-        <BsArrowLeftShort
-          className={`bg-red-600 text-white text-3xl rounded-full absolute -right-3 top-9 border border-red-600 cursor-pointer ${
-            !open && "rotate-180"
-          }`}
-          onClick={() => setOpen(!open)}
-        />
-        <div className="inline-flex mb-6">
-          <img
-            src={Icon}
-            alt="PremiumIcon"
-            className={`w-12 h-12 duration-500 ${open && "rotate-[360deg]"}`}
-          />
-          <div
-            className={`font-bold text-xl text-red-600 origin-left duration-300 p-2 ${
-              !open && "scale-0"
+    <div className="w-full h-full">
+      <div className="flex">
+        <div
+          className={`h-full bg-[#2b2e35] pt-8 ${
+            open ? "w-80" : "w-[100px]"
+          } duration-300 relative`}
+        >
+          <BsArrowLeftShort
+            className={`bg-red-600 text-white text-3xl rounded-full absolute -right-3 top-9 border border-red-600 cursor-pointer ${
+              !open && "rotate-180"
             }`}
-          >
-            PremiumTrust Bank
+            onClick={() => setOpen(!open)}
+          />
+          <div className="inline-flex mb-6 mx-2">
+            <img
+              src={Icon}
+              alt="PremiumIcon"
+              className={`w-12 h-12 duration-500 ${open && "rotate-[360deg]"}`}
+            />
+            <div
+              className={`font-bold text-xl text-red-600 origin-left duration-300 p-2 ${
+                !open && "scale-0"
+              }`}
+            >
+              PremiumTrust Bank
+            </div>
           </div>
+          <ul>
+            {Menus.map((menu, index) => (
+              <SidebarLinks key={index} menu={menu} />
+            ))}
+          </ul>
         </div>
-        <ul>
-          {Menus.map((menu, index) => (
-            <SidebarLinks key={index} menu={menu} />
-          ))}
-        </ul>
+        <div className="flex-1">
+          <Header text="Dashboard" />
+          <main className="w-full bg-gray-50">{children}</main>
+        </div>
       </div>
-      <div className="flex-1">
-        <Header text="Dashboard" />
-        <main className="w-full h-full flex-1 bg-gray-50">{children}</main>
-      </div>
+      <Footer />
     </div>
   );
 };

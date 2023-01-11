@@ -58,6 +58,21 @@ const ProfileManager = () => {
                 />
               </div>
             </div>
+            <div className="m-4">
+              <div>
+                <label className="mb-2 text-sm font-normal text-[#2d3748]">
+                  Supervisor
+                </label>
+                <input
+                  type="text"
+                  className="w-full h-[48px] border border-[#d1d1d1] rounded-[5px] p-2"
+                  required
+                //   name="email"
+                //   value={email}
+                //   onChange={handleChange}
+                />
+              </div>
+            </div>
             <div className="m-4 relative">
               <div>
                 <label className="mb-2 text-sm font-normal text-[#2d3748]">
