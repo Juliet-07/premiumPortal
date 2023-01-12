@@ -128,7 +128,7 @@ const Dashboard = () => {
             </a>
           </div>
         </div>
-        <div className="w-[362px] h-full flex-col shadow-md shadow-red-200">
+        <div className="w-[362px] h-full flex-col shadow-md shadow-red-200 mr-10">
           <div className="h-[52px] bg-red-600 rounded-t-xl text-xl text-white font-medium p-4">
             Who is celebrating?
           </div>
